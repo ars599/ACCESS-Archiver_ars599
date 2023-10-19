@@ -18,12 +18,11 @@ comp_proj=p66
 #base_dir=/scratch/p66/txz599/archive
 # highres /g/data/p66/mrd599/cq880
 #base_dir=/g/data/p66/mrd599
-#base_dir=/scratch/p66/ars599/archive
+base_dir=/scratch/p66/ars599/archive
 #base_dir=/scratch/p66/dhb599/archive
 #base_dir=/scratch/p66/ars599/cylc-run/
 #base_dir=/g/data/p66/mrd599
 #base_dir=/scratch/p66/txz599/ACCESS_output
-base_dir=/scratch/w40/dxd565/mom/archive
 
 #arch_dir = location to archive
 # for cmip runs

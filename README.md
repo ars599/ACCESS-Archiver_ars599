@@ -73,8 +73,8 @@ This is called from *wrap_ACCESS_Archiver.sh* by altering the *task* variable.
 ## Update history
 
 20/10/2023 upload the option to deal with gfdlpayu experiments
-|
-|--history--|
-            |- atm (atm and land .nc)
-            |- ocn
-            |- ice
+|  
+|--history--|  
+&nbsp;                        &emsp;|- atm (atm and land .nc)  
+&nbsp;                        &emsp;|- ocn  
+&nbsp;                        &emsp;|- ice  

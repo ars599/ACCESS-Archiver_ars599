@@ -81,6 +81,8 @@ if [[ $access_version == om2 ]]; then
   ${here}/subroutines/find_files_om2.sh
 elif [[ $access_version == esmpayu ]]; then
   ${here}/subroutines/find_files_payu.sh
+elif [[ $access_version == gfdlpayu ]]; then
+  ${here}/subroutines/find_files_gfdlpayu.sh
 else
   ${here}/subroutines/find_files.sh
 fi
@@ -142,7 +144,7 @@ echo "access version: $access_version"
 python -W ignore $here/tmp/$loc_exp/run_um2nc.py
 
 EOF
-if [[ $access_version != om2 ]]; then
+if [[ $access_version != om2 && $access_version != gfdlpayu ]]; then
   ls $here/tmp/$loc_exp/job_um2nc.qsub.sh
   chmod +x $here/tmp/$loc_exp/job_um2nc.qsub.sh
   qsub $here/tmp/$loc_exp/job_um2nc.qsub.sh
@@ -194,9 +196,13 @@ fi
 #----------------------------#
 #exit
 #---- copy job --------------#
-if [[ $access_version == *payu* ]]; then
+if [[ $access_version == esmpayu ]]; then
   cp $here/subroutines/cp_hist_payu.sh $here/tmp/$loc_exp/cp_hist.sh
   cp $here/subroutines/cp_rest_payu.sh $here/tmp/$loc_exp/cp_rest.sh
+elif [[ $access_version == gfdlpayu ]]; then
+  cp $here/subroutines/cp_hist_gfdlpayu.sh $here/tmp/$loc_exp/cp_hist.sh
+  cp $here/subroutines/cp_rest_gfdlpayu.sh $here/tmp/$loc_exp/cp_rest.sh
+#  cp $here/subroutines/link_arch_om2.sh $here/tmp/$loc_exp/link_arch_om2.sh
 elif [[ $access_version == om2 ]]; then
   cp $here/subroutines/link_arch_om2.sh $here/tmp/$loc_exp/link_arch_om2.sh
 elif [[ $access_version == *amip ]]; then #|| [[ $access_version == *chem ]]; then
@@ -242,6 +248,8 @@ if [[ $access_version == om2 ]]; then
   $here/tmp/$loc_exp/link_arch_om2.sh
 elif [[ $access_version == *amip ]]; then #|| [[ $access_version == *chem ]]; then
   $here/tmp/$loc_exp/cp_rest.sh
+#elif [[ $access_version == gfdlpayu ]]; then
+#  $here/tmp/$loc_exp/link_arch_om2.sh
 else
   $here/tmp/$loc_exp/cp_hist.sh
   $here/tmp/$loc_exp/cp_rest.sh
